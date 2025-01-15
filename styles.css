@@ -1,0 +1,279 @@
+/* Reset dan Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Menambahkan latar belakang ringan */
+}
+
+/* Header dan Navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background 0.3s ease; /* Transisi saat scroll */
+}
+
+header.scrolled {
+    background: #333; /* Mengubah latar belakang saat scroll */
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+.cart-toggle {
+    position: relative;
+    padding: 0.5rem;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 50vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    margin-top: 60px;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block; /* Memastikan tombol dapat berfungsi dengan baik */
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Products Section */
+.section {
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+/* Sale Prices */
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 0.5rem;
+}
+
+.sale-price {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+/* Cart */
+.cart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1001;
+}
+
+.cart.active {
+    right: 0;
+}
+
+.cart-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+}
+
+/* Media Query untuk Tampilan Responsif */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Agar tidak terhalang header */
+    }
+
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Agar menu tidak tertutup header */
+        left: 0;
+        right: 0;
+        background: var(--dark-gray);
+        padding: 1rem;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 50vh;
+        padding: 1rem;
+        margin-top: 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Lebih rapat untuk tampilan kecil */
+    }
+
+    .product-card img {
+        height: auto;
+    }
+
+    .cart {
+        width: 100%; /* Memastikan keranjang muncul penuh pada layar kecil */
+        right: 0;
+    }
+
+    .cart-items {
+        padding: 1rem;
+    }
+}
